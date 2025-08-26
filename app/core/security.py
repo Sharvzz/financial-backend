@@ -3,9 +3,10 @@ from jose import jwt
 from app.database.session import SessionLocal
 from app.models.user import User
 from fastapi import HTTPException
+import os
 
-SECRET_KEY = "your-secret-key"  # Change this in production
-ALGORITHM = "HS256"
+SECRET_KEY = os.getenv("SECRET_KEY")  # Change this in production
+ALGORITHM = os.getenv("ALGORITHM")
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
