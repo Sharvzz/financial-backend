@@ -89,5 +89,8 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
     return {"access_token": access_token, "token_type": "bearer"}
 
 # Run the app with port 8080
+@app.get("/")
+def home():
+    return "Adeiii backend work aagudhu da"
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)
