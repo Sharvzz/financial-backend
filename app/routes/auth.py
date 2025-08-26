@@ -5,8 +5,13 @@ from app.models.user import User
 from app.core.security import get_password_hash, verify_password, create_access_token
 from app.database.session import SessionLocal
 
-router = APIRouter()
+# Add a prefix and tags for clarity
+router = APIRouter(
+    prefix="/auth",
+    tags=["Auth"]
+)
 
+# Dependency to get DB session
 def get_db():
     db = SessionLocal()
     try:

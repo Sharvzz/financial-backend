@@ -8,6 +8,12 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+# Health-check root route (useful for Railway check)
+@app.get("/")
+def home():
+    return {"message": "Backend is running 🚀"}
+
+# Include auth routes
 app.include_router(auth_router)
 
 # 👇 Add this only when running the app directly (not when imported by uvicorn)
