@@ -7,7 +7,7 @@ from jose import JWTError, jwt
 from pydantic import BaseModel
 import os
 import uvicorn
-
+from fastapi.responses import FileResponse
 # Database URL (from environment variable, fallback to Railway URL if not set)
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
@@ -91,6 +91,6 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
 # Run the app with port 8080
 @app.get("/")
 def home():
-    return "Adeiii backend work aagudhu da"
+    return FileResponse("static/vadivelu-1.jpg")
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)
